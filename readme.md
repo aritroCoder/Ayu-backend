@@ -29,6 +29,7 @@ For users(patients) to sign into the application. Login not required to use this
 
 Request format: Set 'Content-Type' to 'application/json' in headers. Inside body, provide the name, passoword, phone number, email, gender, age in standard JSON format. A sample example is:
 
+<pre>
 {
     "name": "James",
     "password": "I am James",
@@ -37,11 +38,13 @@ Request format: Set 'Content-Type' to 'application/json' in headers. Inside body
     "gender": "male",
     "age": 24
 }
+</pre>
 
 The request made in this manner will be accepted by the API and fetch a response from the server.
 
 Response format: The response will JSON object containing all the details given to the server in request, along with a additional authtoken, that is used to verify whether the user is logged in or not. For example, if the request is:
 
+<pre>
 {
     "name": "Jane",
     "password": "JaneIsSick",
@@ -50,9 +53,11 @@ Response format: The response will JSON object containing all the details given 
     "gender": "female",
     "age": 19
 }
+</pre>
 
 Then the response will be:
 
+<pre>
 {
   "user": {
     "name": "Jane",
@@ -66,6 +71,7 @@ Then the response will be:
   },
   "authtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzQzOWEyZDQ4MDA3ZmFhZjFhM2JhMSIsInBoX251bWJlciI6MTIzNDU2NzgwOSwiZW1haWwiOiJqYW5lQGdtYWlsLmNvbSIsImlhdCI6MTY0NzU4OTc5NCwiZXhwIjoxNjQ3NTk2OTk0fQ.C7JyNDwvL-hPZ3VpTSoV6qD6uGgxSFkKDwy4A5JmKfk"
 }
+</pre>
 
 Note that the password field contains the hash instead of actual password in response, in database actual password is never stored. The user details can be used to display in the profile page, and authtoken must be kept in the client for authentication. On idle state, the authtoken expires after 2 hours.
 Authtoken - The authtoken is a digitally signed key made using the user details and a secret string present in the code.
@@ -74,6 +80,7 @@ POST: /api/auth/docsignup
 This is similar to the previous sign up route, with some extra data in the request json body.
 Sample request: 
 
+<pre>
 {
     "name": "NoobMedic",
     "password": "Sample password",
@@ -85,9 +92,11 @@ Sample request:
     "field_of_specialization": "General",
     "reg_no": "15648A"
 }
+</pre>
 
 Response to the request:
 
+<pre>
 {
   "user": {
     "name": "NoobMedic",
@@ -104,6 +113,7 @@ Response to the request:
   },
   "authtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzQzZjBhZDQ4MDA3ZmFhZjFhM2JhNyIsInBoX251bWJlciI6MTIzNDU2Nzg5MCwiZW1haWwiOiJuMDBiQGdtYWlsLmNvbSIsImlhdCI6MTY0NzU5MTE3OCwiZXhwIjoxNjQ3NTk4Mzc4fQ.wyoiHnu-qossIY7MwfK2I-x_n-E_a-bVmYme5TKG_5U"
 }
+</pre>
 
 ### Log In
 
@@ -111,13 +121,16 @@ POST: /api/auth/login
 Works for both users and doctors.
 Request format: Set 'Content-Type' to 'application/json' in headers. Inside body, provide the email, passowordin standard JSON format. A sample example is:
 
+<pre>
 {
     "email": "john@gmail.com",
     "password": "iamjohn"
 }
+</pre>
 
 Response to the request:
 
+<pre>
 {
   "user": {
     "_id": "623178b774da9883a7aaf5b4",
@@ -131,6 +144,7 @@ Response to the request:
   },
   "authtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzE3OGI3NzRkYTk4ODNhN2FhZjViNCIsInBoX251bWJlciI6OTgzNjg0MTcwNiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsImlhdCI6MTY0NzU5MTM2MywiZXhwIjoxNjQ3NTk4NTYzfQ.3BqUMvjrQTPXLQuLdWzKaSFdnN8_biVlYC6K1Vp9WV0"
 }
+</pre>
 
 display the user data recieved in the profile page, and keep the authtoken to perform actions that require a sign in. 
 
@@ -146,11 +160,13 @@ auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzE3OGI3NzRkYTk4ODN
 
 The body will contain the phone number of doctor to be apppointed, date and time(in standard format) for instance, 
 
+<pre>
 {
     "ph_doc": 9836841806,
     "date": "2022-03-19",
     "time": "08:00"
 }
+</pre>
 
 The response of this request will be:
 
@@ -162,7 +178,8 @@ The response of this request will be:
   "time": "08:00",
   "_id": "623450aed48007faaf1a3bad",
   "__v": 0
-}</pre>
+}
+</pre>
 
 Note that ph_no_patient is the phone number of the logged in patient(whose authtoken is used to authenticate), and is fetched from the database.
 
@@ -198,7 +215,8 @@ sample output:
     "time": "11:00",
     "__v": 0
   }
-]</pre>
+]
+</pre>
 
 DELETE '/api/appointment/cancelAppointment/:id'
 deletes/cancels the appointment associated with the id passed in the URL. Example, if we want to delete the appointment:
@@ -211,7 +229,8 @@ deletes/cancels the appointment associated with the id passed in the URL. Exampl
     "date": "2022-03-19T11:00:00.000Z",
     "time": "11:00",
     "__v": 0
-}</pre>
+}
+</pre>
 
 Then the _id field will be the id. Thus id = 62345171d48007faaf1a3bb7.
 Request format: It will be a DELETE request, and the id will be contained in the URL. Example:
