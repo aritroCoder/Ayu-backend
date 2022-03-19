@@ -9,6 +9,9 @@ The backend aims to provide a login/signup solutions to doctors, and appointment
 Fork the github repository, then clone the forked repo in your PC. 
 Make sure you have nodejs installed, you can download nodejs from here: https://nodejs.org/en/
 Install nodejs in your PC.
+create a folder named .env along with other files, and enter the line: 
+PORT=3000
+in the folder, where 3000 is the port number where you want to host the backend
 after that, go to the project directory, which is basically [parent]/Ayu/ and open a terminal there
 type `npm i`
 after it is finished, type node index and server will start.
@@ -151,6 +154,7 @@ The body will contain the phone number of doctor to be apppointed, date and time
 
 The response of this request will be:
 
+<pre>
 {
   "ph_no_patient": 9836841706,
   "ph_no_doctor": 9836841806,
@@ -158,7 +162,7 @@ The response of this request will be:
   "time": "08:00",
   "_id": "623450aed48007faaf1a3bad",
   "__v": 0
-}
+}</pre>
 
 Note that ph_no_patient is the phone number of the logged in patient(whose authtoken is used to authenticate), and is fetched from the database.
 
@@ -168,6 +172,7 @@ Request format: As this is a GET request,the body is empty here. Only add the au
 Response format: succesful response will be the list of appointments of the specified user only.
 sample output: 
 
+<pre>
 [
   {
     "_id": "623450aed48007faaf1a3bad",
@@ -193,11 +198,12 @@ sample output:
     "time": "11:00",
     "__v": 0
   }
-]
+]</pre>
 
 DELETE '/api/appointment/cancelAppointment/:id'
 deletes/cancels the appointment associated with the id passed in the URL. Example, if we want to delete the appointment:
 
+<pre>
 {
     "_id": "62345171d48007faaf1a3bb7",
     "ph_no_patient": 9836841706,
@@ -205,7 +211,7 @@ deletes/cancels the appointment associated with the id passed in the URL. Exampl
     "date": "2022-03-19T11:00:00.000Z",
     "time": "11:00",
     "__v": 0
-}
+}</pre>
 
 Then the _id field will be the id. Thus id = 62345171d48007faaf1a3bb7.
 Request format: It will be a DELETE request, and the id will be contained in the URL. Example:
@@ -214,6 +220,7 @@ This is a protected route, and only the patient/doctor can cancel the appointmen
 
 Response format: It returns a json file on success
 
+<pre>
 {
   "Success": "Your appointment has been cancelled",
   "appointment_data": {
@@ -225,6 +232,156 @@ Response format: It returns a json file on success
     "__v": 0
   }
 }
+</pre>
 
 It contains the success message along with the appointment that was removed.
+
+## Doctor Endpoints
+
+Route 1: Get all list of Doctors using GET /api/doctor/fetchalldoctors
+Request format: Put a valid auth-token in the headers. In a GET request, body can be empty
+Response format:
+
+<pre>
+[
+  {
+    "_id": "62318849b97dedc6f1cf93cf",
+    "name": "John Medic",
+    "password": "$2a$10$dPAoAfppXvLWeONUoFrCdu.dQG4RbmqIikaTK0prYBEEszHcjSL.C",
+    "ph_number": 9836841806,
+    "email": "john2@gmail.com",
+    "gender": "male",
+    "age": 24,
+    "years_of_exp": 5,
+    "field_of_specialization": "General",
+    "reg_no": "7596AB",
+    "__v": 0
+  },
+  {
+    "_id": "62343f0ad48007faaf1a3ba7",
+    "name": "NoobMedic",
+    "password": "$2a$10$uUlv0VWLlZ6lITfqbsP3d./qHgzzP32YENPUNjXzMNgJmrUtXcNjG",
+    "ph_number": 1234567890,
+    "email": "n00b@gmail.com",
+    "gender": "male",
+    "age": 21,
+    "years_of_exp": 2,
+    "field_of_specialization": "General",
+    "reg_no": "15648A",
+    "__v": 0
+  },
+  {
+    "_id": "623573fcafe62940902edbf4",
+    "name": "NewMedic",
+    "password": "$2a$10$58o74ZH4Apv78RcDTi9Enesjao55Lqae7mkewh6NlJo0vBAA2xGrC",
+    "ph_number": 4567891230,
+    "email": "medic@gmail.com",
+    "gender": "male",
+    "age": 21,
+    "years_of_exp": 2,
+    "field_of_specialization": "General",
+    "reg_no": "15648A",
+    "__v": 0
+  },
+  {
+    "_id": "623577ca760465e084df7bed",
+    "name": "Jane Adams",
+    "password": "$2a$10$ZT1ZlQc7Zb9diQdowuHVUeTPFqTZb4OzWpSTDU/sMWg0g8OpWTc8C",
+    "ph_number": 5567891230,
+    "email": "janeA@gmail.com",
+    "gender": "other",
+    "age": 21,
+    "years_of_exp": 2,
+    "field_of_specialization": "Gynaecology",
+    "reg_no": "35648A",
+    "__v": 0
+  }
+]</pre>
+
+If no doctor is found, it will give a error message
+
+<pre>
+{"error": "No doctors found."}
+</pre>
+
+Route 2: Find a doctor by name using GET /api/doctor/find/:name
+Request format: auth-token must be present. Name of the doctor must replace the ':name' in URL. Example: if the name of the doctor is John Smith, then the URL will be 'http://localhost:{port}/api/doctor/find/John%20Smith'
+
+Response format:If the doctor is found, it will be returned in this format
+
+<pre>
+[
+  {
+    "_id": "62343f0ad48007faaf1a3ba7",
+    "name": "NoobMedic",
+    "password": "$2a$10$uUlv0VWLlZ6lITfqbsP3d./qHgzzP32YENPUNjXzMNgJmrUtXcNjG",
+    "ph_number": 1234567890,
+    "email": "n00b@gmail.com",
+    "gender": "male",
+    "age": 21,
+    "years_of_exp": 2,
+    "field_of_specialization": "General",
+    "reg_no": "15648A",
+    "__v": 0
+  }
+]</pre>
+
+If no doctor is found, it will give a error message
+
+<pre>
+{"error": "No doctors found."}
+</pre>
+
+Route 3: Find a doctor by specialization using GET /api/doctor/findBySpec/:specialization
+Request format: auth-token must be present. Specialization of the doctor must replace the ':specialization' in URL. Example: if the specialization of the doctor is Pediatric, then the URL will be 'http://localhost:{port}/api/doctor/find/Pediatric' (case sensitive)
+
+Response format:If the doctor is found, it will be returned in this format
+
+<pre>[
+  {
+    "_id": "62318849b97dedc6f1cf93cf",
+    "name": "John Medic",
+    "password": "$2a$10$dPAoAfppXvLWeONUoFrCdu.dQG4RbmqIikaTK0prYBEEszHcjSL.C",
+    "ph_number": 9836841806,
+    "email": "john2@gmail.com",
+    "gender": "male",
+    "age": 24,
+    "years_of_exp": 5,
+    "field_of_specialization": "General",
+    "reg_no": "7596AB",
+    "__v": 0
+  },
+  {
+    "_id": "62343f0ad48007faaf1a3ba7",
+    "name": "NoobMedic",
+    "password": "$2a$10$uUlv0VWLlZ6lITfqbsP3d./qHgzzP32YENPUNjXzMNgJmrUtXcNjG",
+    "ph_number": 1234567890,
+    "email": "n00b@gmail.com",
+    "gender": "male",
+    "age": 21,
+    "years_of_exp": 2,
+    "field_of_specialization": "General",
+    "reg_no": "15648A",
+    "__v": 0
+  },
+  {
+    "_id": "623573fcafe62940902edbf4",
+    "name": "NewMedic",
+    "password": "$2a$10$58o74ZH4Apv78RcDTi9Enesjao55Lqae7mkewh6NlJo0vBAA2xGrC",
+    "ph_number": 4567891230,
+    "email": "medic@gmail.com",
+    "gender": "male",
+    "age": 21,
+    "years_of_exp": 2,
+    "field_of_specialization": "General",
+    "reg_no": "15648A",
+    "__v": 0
+  }
+]</pre>
+
+If no doctor is found, it will give a error message
+
+<pre>
+{"error": "No doctors found."}
+</pre>
 

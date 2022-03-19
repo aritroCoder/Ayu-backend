@@ -17,6 +17,7 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/appointment', require('./routes/appointment'))
+app.use('/api/doctor', require('./routes/doctor'))
 
 //start server
 const connectToMongo = async () => {
