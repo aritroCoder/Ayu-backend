@@ -48,7 +48,7 @@ router.post('/usersignup', [
       id: user.id,
       ph_number: user.ph_number,
       email: user.email
-    }, SECRET_KEY, { expiresIn: '2h'});
+    }, SECRET_KEY, {});
 
 
     // res.json(user)
@@ -105,7 +105,7 @@ router.post('/docsignup', [
       id: user.id,
       ph_number: user.ph_number,
       email: user.email
-    }, SECRET_KEY, { expiresIn: '2h'});
+    }, SECRET_KEY, {});
 
 
     // res.json(user)
@@ -146,7 +146,7 @@ router.post('/login', [
         id: user.id,
         ph_number: user.ph_number,
         email: user.email
-      }, SECRET_KEY, { expiresIn: '2h'});
+      }, SECRET_KEY, {});
       res.json({ user, authtoken })
   
     } catch (error) {
