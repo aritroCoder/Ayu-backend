@@ -13,7 +13,7 @@ const UserSchema = new Schema({
         required: true
     },
     ph_number:{
-        type: Number,
+        type: String,
         required: true,
         unique: true
     },
@@ -27,7 +27,7 @@ const UserSchema = new Schema({
         required: true,
     },
     age:{
-        type: Number,
+        type: String,
         required: true,
     }
 });

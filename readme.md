@@ -33,10 +33,10 @@ Request format: Set 'Content-Type' to 'application/json' in headers. Inside body
 {
     "name": "James",
     "password": "I am James",
-    "ph_number": 9836841706,
+    "ph_number": "9836841706",
     "email": "james@gmail.com",
     "gender": "male",
-    "age": 24
+    "age": "24"
 }
 </pre>
 
@@ -48,10 +48,10 @@ Response format: The response will JSON object containing all the details given 
 {
     "name": "Jane",
     "password": "JaneIsSick",
-    "ph_number": 1234567809,
+    "ph_number": "1234567809",
     "email": "jane@gmail.com",
     "gender": "female",
-    "age": 19
+    "age": "19"
 }
 </pre>
 
@@ -62,10 +62,10 @@ Then the response will be:
   "user": {
     "name": "Jane",
     "password": "$2a$10$x3olh2dCJbLO/TPj467m6.5e.xdMJ2mJduXahU3CUH7JQITu2KCUK",
-    "ph_number": 1234567809,
+    "ph_number": "1234567809",
     "email": "jane@gmail.com",
     "gender": "female",
-    "age": 19,
+    "age": "19",
     "_id": "623439a2d48007faaf1a3ba1",
     "__v": 0
   },
@@ -84,11 +84,11 @@ Sample request:
 {
     "name": "NoobMedic",
     "password": "Sample password",
-    "ph_number": 1234567890,
+    "ph_number": "1234567890",
     "email": "n00b@gmail.com",
     "gender": "male",
-    "age": 21,
-    "years_of_exp": 2,
+    "age": "21",
+    "years_of_exp": "2",
     "field_of_specialization": "General",
     "reg_no": "15648A"
 }
@@ -101,11 +101,11 @@ Response to the request:
   "user": {
     "name": "NoobMedic",
     "password": "$2a$10$uUlv0VWLlZ6lITfqbsP3d./qHgzzP32YENPUNjXzMNgJmrUtXcNjG",
-    "ph_number": 1234567890,
+    "ph_number": "1234567890",
     "email": "n00b@gmail.com",
     "gender": "male",
-    "age": 21,
-    "years_of_exp": 2,
+    "age": "21",
+    "years_of_exp": "2",
     "field_of_specialization": "General",
     "reg_no": "15648A",
     "_id": "62343f0ad48007faaf1a3ba7",
@@ -136,10 +136,10 @@ Response to the request:
     "_id": "623178b774da9883a7aaf5b4",
     "name": "John Smith",
     "password": "$2a$10$F2PpscNJZnytsyVswAi/Su7FvtB.v4RmnrFq4P00ctLPXM1Ey61oi",
-    "ph_number": 9836841706,
+    "ph_number": "9836841706",
     "email": "john@gmail.com",
     "gender": "male",
-    "age": 24,
+    "age": "24",
     "__v": 0
   },
   "authtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzE3OGI3NzRkYTk4ODNhN2FhZjViNCIsInBoX251bWJlciI6OTgzNjg0MTcwNiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsImlhdCI6MTY0NzU5MTM2MywiZXhwIjoxNjQ3NTk4NTYzfQ.3BqUMvjrQTPXLQuLdWzKaSFdnN8_biVlYC6K1Vp9WV0"
@@ -162,7 +162,7 @@ The body will contain the phone number of doctor to be apppointed, date and time
 
 <pre>
 {
-    "ph_doc": 9836841806,
+    "ph_doc": "9836841806",
     "date": "2022-03-19",
     "time": "08:00"
 }
@@ -172,8 +172,8 @@ The response of this request will be:
 
 <pre>
 {
-  "ph_no_patient": 9836841706,
-  "ph_no_doctor": 9836841806,
+  "ph_no_patient": "9836841706",
+  "ph_no_doctor": "9836841806",
   "date": "2022-03-19T08:00:00.000Z",
   "time": "08:00",
   "_id": "623450aed48007faaf1a3bad",
@@ -193,24 +193,24 @@ sample output:
 [
   {
     "_id": "623450aed48007faaf1a3bad",
-    "ph_no_patient": 9836841706,
-    "ph_no_doctor": 9836841806,
+    "ph_no_patient": "9836841706",
+    "ph_no_doctor": "9836841806",
     "date": "2022-03-19T08:00:00.000Z",
     "time": "08:00",
     "__v": 0
   },
   {
     "_id": "6234516bd48007faaf1a3bb3",
-    "ph_no_patient": 9836841706,
-    "ph_no_doctor": 9836841806,
+    "ph_no_patient": "9836841706",
+    "ph_no_doctor": "9836841806",
     "date": "2022-03-19T09:00:00.000Z",
     "time": "09:00",
     "__v": 0
   },
   {
     "_id": "62345171d48007faaf1a3bb7",
-    "ph_no_patient": 9836841706,
-    "ph_no_doctor": 9836841806,
+    "ph_no_patient": "9836841706",
+    "ph_no_doctor": "9836841806",
     "date": "2022-03-19T11:00:00.000Z",
     "time": "11:00",
     "__v": 0
@@ -224,8 +224,8 @@ deletes/cancels the appointment associated with the id passed in the URL. Exampl
 <pre>
 {
     "_id": "62345171d48007faaf1a3bb7",
-    "ph_no_patient": 9836841706,
-    "ph_no_doctor": 9836841806,
+    "ph_no_patient": "9836841706",
+    "ph_no_doctor": "9836841806",
     "date": "2022-03-19T11:00:00.000Z",
     "time": "11:00",
     "__v": 0
@@ -244,8 +244,8 @@ Response format: It returns a json file on success
   "Success": "Your appointment has been cancelled",
   "appointment_data": {
     "_id": "62345171d48007faaf1a3bb7",
-    "ph_no_patient": 9836841706,
-    "ph_no_doctor": 9836841806,
+    "ph_no_patient": "9836841706",
+    "ph_no_doctor": "9836841806",
     "date": "2022-03-19T11:00:00.000Z",
     "time": "11:00",
     "__v": 0
@@ -267,11 +267,11 @@ Response format:
     "_id": "62318849b97dedc6f1cf93cf",
     "name": "John Medic",
     "password": "$2a$10$dPAoAfppXvLWeONUoFrCdu.dQG4RbmqIikaTK0prYBEEszHcjSL.C",
-    "ph_number": 9836841806,
+    "ph_number": "9836841806",
     "email": "john2@gmail.com",
     "gender": "male",
-    "age": 24,
-    "years_of_exp": 5,
+    "age": "24",
+    "years_of_exp": "5",
     "field_of_specialization": "General",
     "reg_no": "7596AB",
     "__v": 0
@@ -280,11 +280,11 @@ Response format:
     "_id": "62343f0ad48007faaf1a3ba7",
     "name": "NoobMedic",
     "password": "$2a$10$uUlv0VWLlZ6lITfqbsP3d./qHgzzP32YENPUNjXzMNgJmrUtXcNjG",
-    "ph_number": 1234567890,
+    "ph_number": "1234567890",
     "email": "n00b@gmail.com",
     "gender": "male",
-    "age": 21,
-    "years_of_exp": 2,
+    "age": "21",
+    "years_of_exp": "2",
     "field_of_specialization": "General",
     "reg_no": "15648A",
     "__v": 0
@@ -293,11 +293,11 @@ Response format:
     "_id": "623573fcafe62940902edbf4",
     "name": "NewMedic",
     "password": "$2a$10$58o74ZH4Apv78RcDTi9Enesjao55Lqae7mkewh6NlJo0vBAA2xGrC",
-    "ph_number": 4567891230,
+    "ph_number": "4567891230",
     "email": "medic@gmail.com",
     "gender": "male",
-    "age": 21,
-    "years_of_exp": 2,
+    "age": "21",
+    "years_of_exp": "2",
     "field_of_specialization": "General",
     "reg_no": "15648A",
     "__v": 0
@@ -306,11 +306,11 @@ Response format:
     "_id": "623577ca760465e084df7bed",
     "name": "Jane Adams",
     "password": "$2a$10$ZT1ZlQc7Zb9diQdowuHVUeTPFqTZb4OzWpSTDU/sMWg0g8OpWTc8C",
-    "ph_number": 5567891230,
+    "ph_number": "5567891230",
     "email": "janeA@gmail.com",
     "gender": "other",
-    "age": 21,
-    "years_of_exp": 2,
+    "age": "21",
+    "years_of_exp": "2",
     "field_of_specialization": "Gynaecology",
     "reg_no": "35648A",
     "__v": 0
@@ -334,11 +334,11 @@ Response format:If the doctor is found, it will be returned in this format
     "_id": "62343f0ad48007faaf1a3ba7",
     "name": "NoobMedic",
     "password": "$2a$10$uUlv0VWLlZ6lITfqbsP3d./qHgzzP32YENPUNjXzMNgJmrUtXcNjG",
-    "ph_number": 1234567890,
+    "ph_number": "1234567890",
     "email": "n00b@gmail.com",
     "gender": "male",
-    "age": 21,
-    "years_of_exp": 2,
+    "age": "21",
+    "years_of_exp": "2",
     "field_of_specialization": "General",
     "reg_no": "15648A",
     "__v": 0
@@ -361,11 +361,11 @@ Response format:If the doctor is found, it will be returned in this format
     "_id": "62318849b97dedc6f1cf93cf",
     "name": "John Medic",
     "password": "$2a$10$dPAoAfppXvLWeONUoFrCdu.dQG4RbmqIikaTK0prYBEEszHcjSL.C",
-    "ph_number": 9836841806,
+    "ph_number": "9836841806",
     "email": "john2@gmail.com",
     "gender": "male",
-    "age": 24,
-    "years_of_exp": 5,
+    "age": "24",
+    "years_of_exp": "5",
     "field_of_specialization": "General",
     "reg_no": "7596AB",
     "__v": 0
@@ -374,11 +374,11 @@ Response format:If the doctor is found, it will be returned in this format
     "_id": "62343f0ad48007faaf1a3ba7",
     "name": "NoobMedic",
     "password": "$2a$10$uUlv0VWLlZ6lITfqbsP3d./qHgzzP32YENPUNjXzMNgJmrUtXcNjG",
-    "ph_number": 1234567890,
+    "ph_number": "1234567890",
     "email": "n00b@gmail.com",
     "gender": "male",
-    "age": 21,
-    "years_of_exp": 2,
+    "age": "21",
+    "years_of_exp": "2",
     "field_of_specialization": "General",
     "reg_no": "15648A",
     "__v": 0
@@ -387,11 +387,11 @@ Response format:If the doctor is found, it will be returned in this format
     "_id": "623573fcafe62940902edbf4",
     "name": "NewMedic",
     "password": "$2a$10$58o74ZH4Apv78RcDTi9Enesjao55Lqae7mkewh6NlJo0vBAA2xGrC",
-    "ph_number": 4567891230,
+    "ph_number": "4567891230",
     "email": "medic@gmail.com",
     "gender": "male",
-    "age": 21,
-    "years_of_exp": 2,
+    "age": "21",
+    "years_of_exp": "2",
     "field_of_specialization": "General",
     "reg_no": "15648A",
     "__v": 0

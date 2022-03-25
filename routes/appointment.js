@@ -53,10 +53,10 @@ router.get('/list', fetchuser, async (req, res) => {
 router.delete('/cancelAppointment/:id', fetchuser, async (req, res) => {
     let appointment_data = await Appointment.findById(req.params.id);
     if (!appointment_data) return res.status(404).json({ error: 'Appointment not found' });
-    if (appointment_data.ph_no_patient === req.user.ph_number) {
+    if (appointment_data.ph_no_patient.localeCompare(req.user.ph_number)===0) {
         appointment_data = await Appointment.findByIdAndDelete(req.params.id);
     }
-    else if (appointment_data.ph_no_doctor === req.user.ph_number) {
+    else if (appointment_data.ph_no_doctor.localeCompare( req.user.ph_number)===0) {
         appointment_data = await Appointment.findByIdAndDelete(req.params.id);
     }
     else {
