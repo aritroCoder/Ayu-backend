@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var cors = require('cors')
 require('dotenv').config();  //dotenv required for accessing .env file
 
 const { MONGODB } = require('./config.js');
 const port = process.env.PORT;
+
+app.use(cors())
 
 //endpoints
 app.get('/', (req, res) => {
