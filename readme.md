@@ -8,9 +8,9 @@ The backend aims to provide a login/signup solutions to doctors, and appointment
 
 Fork the github repository, then clone the forked repo in your PC. 
 Make sure you have nodejs installed, you can download nodejs from here: https://nodejs.org/en/
-Install nodejs in your PC.
+Install nodejs in your PC.<br>
 create a folder named .env along with other files, and enter the line: 
-PORT=3000
+PORT=3000 <br>
 in the folder, where 3000 is the port number where you want to host the backend
 after that, go to the project directory, which is basically [parent]/Ayu/ and open a terminal there
 type `npm i`
@@ -20,8 +20,10 @@ after it is finished, type node index and server will start.
 
 Note 1: User email and phone number are unique fields, and must be different for every user. Similiarly appointment time also must be unique.
 
-Note 2: The URLs provided in the later sections are only partial URLs, and you have to append the host in front of the URL. Example, if the URL is /api/auth/usersignup, then the correct URL will be {host}/api/auth/usersignup, where {host} is the hostname of the API. In case you are ruunning  it in your local PC, it will be http://localhost:{port}, where {port} is the port number (generally 3000). Combining all that you get the URL as http://localhost:3000/api/auth/usersignup as the endpoint URL.
+Note 2: The URLs provided in the later sections are only partial URLs, and you have to append the host in front of the URL. Example, if the URL is /api/auth/usersignup, then the correct URL will be {host}/api/auth/usersignup, where {host} is the hostname of the API. In case you are running  it in your local PC, it will be http://localhost:{port}, where {port} is the port number (generally 3000). Combining all that you get the URL as http://localhost:3000/api/auth/usersignup as the endpoint URL.
 Similiarly you can get all the URLs .
+
+Note 3: The backend also hosted in the host URL: https://ayubackend.herokuapp.com/
 
 ### Sign Up
 POST: /api/auth/usersignup 
