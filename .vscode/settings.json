@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/130892c0-8953-4144-bbed-e20c07bbcb8a/resourceGroups/AYUbackend/providers/Microsoft.Web/sites/AYUbackend",
+    "appService.deploySubpath": "."
+}
