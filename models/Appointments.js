@@ -6,11 +6,11 @@ const { Schema }= mongoose;
 const AppointmentSchema = new Schema({
     //appointment will be processed using patient's and doctor's phone number as they will be the primary key
     ph_no_patient:{
-        type: Number,
+        type: String,
         required: true
     },
     ph_no_doctor:{
-        type: Number,
+        type: String,
         required: true
     },
     date:{ 
